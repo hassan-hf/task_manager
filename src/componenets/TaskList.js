@@ -6,12 +6,12 @@ const TaskList =({tasks,deletetask,editTask})=>{
     return(
         <ul>
             {tasks.map((task,index)=>(
-                <Task key={task.id } 
-                task={task} 
-                deleteTask={()=>deletetask(index)}
-                editTask={editTask} 
+                <Task key={task.id }
+                task={task}
+                deleteTask={()=>deletetask(task.id)}
+                editTask={editTask}
                 />
-            ))};
+            ))}
         </ul>
     )
 }

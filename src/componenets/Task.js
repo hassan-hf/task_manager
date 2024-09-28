@@ -5,30 +5,34 @@ const Task =({task,deleteTask,editTask})=>{
     const [updatedTask , setUpdatedTask] =useState(task.title)
     const hendleEdit = () => {
         editTask(task.id,updatedTask) // call edit function passed as props
-        setIsEditing(false);// exit edit mode 
+        setIsEditing(false);// exit edit mode
     }
     return (
-        <div className="btn">
-        <li>
+        <div style={{display:'flex', justifyContent:'space-between', marginBottom:'0.4rem'}}>
+        {/* <li> */}
             {isEditing ? (
-                <input 
+                <input
                 type="text"
                 value={updatedTask}
                 onChange={(e)=>setUpdatedTask(e.target.value)}
                 />
             ):(
-                <span>{task.title}</span>
+                <span style={{width:'30%', alignItems:'start', display:'flex'}}>{task.title}</span>
             )}
-            {task.id}            
-            <button onClick={deleteTask}>Delete</button>
-            {isEditing ? (
-                <button onClick={hendleEdit}>Save</button>
-            ):(
-                <button onClick={()=> setIsEditing(true)}>Edit</button>
-            )}
-           
+            {task.id}
+            <div style={{display:'flex', gap:'1rem'}}>
 
-        </li>
+
+            <button onClick={deleteTask} style={{background:'red', borderRadius:'0.5rem'}}>Delete</button>
+            {isEditing ? (
+                <button onClick={hendleEdit} style={{background:'blue', borderRadius:'0.5rem'}}>Save</button>
+            ):(
+                <button onClick={()=> setIsEditing(true)} style={{background:'blue', borderRadius:'0.5rem'}}>Edit</button>
+            )}
+             </div>
+
+
+        {/* </li> */}
         </div>
         )
 }
